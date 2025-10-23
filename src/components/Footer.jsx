@@ -1,9 +1,8 @@
 const Footer = () => (
-  <footer className="footer df aic jcc" id="contacto">
+  <footer className="footer df aic jcc">
     <div className="footer__content">
       <p className="footer__copy">
-        Imágenes cortesía de <a href="https://unsplash.com/" target="_blank" rel="noreferrer">Unsplash</a>. Portafolio
-        diseñado para fotógrafos que desean dejar huella.
+        Imágenes originales de Joaquín Caparrós. Portafolio diseñado para fotógrafos que desean dejar huella.
       </p>
       <div className="footer__contact">
         <a href="mailto:hola@alexrivera.studio" className="footer__link">

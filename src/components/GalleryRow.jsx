@@ -5,15 +5,17 @@ const GalleryRow = ({ title, blurb, images }) => (
         {images.map(({ src, alt, meta }) => (
           <li className="gallery__item" key={src}>
             <figure className="gallery__figure">
-              <img
-                className="gallery__image"
-                data-preload
-                src={src}
-                alt={alt}
-                width={1240}
-                height={874}
-                loading="lazy"
-              />
+              <div className="gallery__media">
+                <img
+                  className="gallery__image"
+                  data-preload
+                  src={src}
+                  alt={alt}
+                  width={1240}
+                  height={874}
+                  loading="lazy"
+                />
+              </div>
               <figcaption className="gallery__caption">
                 <span>{title}</span>
                 <span>{meta}</span>

@@ -1,57 +1,150 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import gsap from 'gsap';
 import imagesLoaded from 'imagesloaded';
+import AboutSection from './components/AboutSection.jsx';
+import ContactSection from './components/ContactSection.jsx';
 import Footer from './components/Footer.jsx';
 import GalleryRow from './components/GalleryRow.jsx';
 import Hero from './components/Hero.jsx';
+import JournalSection from './components/JournalSection.jsx';
 import Loader from './components/Loader.jsx';
+import ServicesSection from './components/ServicesSection.jsx';
+import TestimonialsSection from './components/TestimonialsSection.jsx';
 import TextBand from './components/TextBand.jsx';
 import { usePortfolioAnimations } from './hooks/usePortfolioAnimations.js';
-
-const BASE_WIDTH = 1240;
-const BASE_HEIGHT = 874;
 
 const galleryDefinitions = [
   {
     title: 'Retratos editoriales',
     blurb: 'Luz natural y composiciones limpias que capturan la esencia de cada rostro.',
     frames: [
-      { src: '/images/52D9ED8B-D70A-40BF-8B6B-00AC63E35E36_1_201_a.jpeg', meta: 'Madrid · Golden Hour' },
-      { src: '/images/552D137E-B649-41E4-9DB3-9FF59F8ED57C_1_201_a.jpeg', meta: 'Barcelona · Editorial urbana' },
-      { src: '/images/6149B43B-A39C-4CCD-91CC-6CDCA31F3B2F_1_201_a.jpeg', meta: 'Estudio · Luz lateral' }
+      { src: '/images/retrato1.jpg', meta: 'Madrid · Luz natural' },
+      { src: '/images/retrato2.jpg', meta: 'Barcelona · Editorial urbana' },
+      { src: '/images/retrato3.jpg', meta: 'Estudio · Contraluces' }
     ]
   },
   {
     title: 'Bodas minimalistas',
     blurb: 'Narrativas íntimas con énfasis en la conexión genuina y el detalle sutil.',
     frames: [
-      { src: '/images/7CF37C9A-10B9-465D-9DA2-4238792C0AB3_1_201_a.jpeg', meta: 'Lisboa · Ceremonia civil' },
-      { src: '/images/8E40AB30-EF88-40C1-8BF6-9C65293B4CA2_1_201_a.jpeg', meta: 'Mallorca · Atardecer' },
-      { src: '/images/A6BABF14-45ED-4172-970F-A3E5CB5E1A16_1_201_a.jpeg', meta: 'Madrid · Azotea' }
+      { src: '/images/bodas1.jpg', meta: 'Lisboa · Ceremonia civil' },
+      { src: '/images/bodas2.jpg', meta: 'Mallorca · Atardecer' },
+      { src: '/images/bodas3.jpg', meta: 'Madrid · Azotea' }
     ]
   },
   {
     title: 'Exploración documental',
     blurb: 'Crónicas visuales de viajes que muestran el pulso de cada ciudad.',
     frames: [
-      { src: '/images/AF4C9837-CDF8-4877-871B-7CF07B15261B_1_201_a.jpeg', meta: 'Tokio · Calle en movimiento' },
-      { src: '/images/B30DC01E-D220-4C81-8D10-54C91D70221F_1_201_a.jpeg', meta: 'Nueva York · Lower East Side' }
+      { src: '/images/ciudad1.jpg', meta: 'Tokio · Calle en movimiento' },
+      { src: '/images/ciudad2.jpg', meta: 'Nueva York · Lower East Side' },
+      { src: '/images/ciudad3.jpg', meta: 'Lima · Amanecer urbano' }
     ]
   },
   {
     title: 'Arquitectura nocturna',
     blurb: 'Geometrías y contrastes que resaltan la armonía del espacio urbano.',
     frames: [
-      { src: '/images/B702F7D7-A7C5-4240-9964-0792B3287375_1_201_a.jpeg', meta: 'Bilbao · Museo Guggenheim' },
-      { src: '/images/E1DA09DA-37A6-47EE-BDE8-DFCB30C03A2E_1_201_a.jpeg', meta: 'Singapur · Marina Bay' }
+      { src: '/images/noche1.jpg', meta: 'Bilbao · Museo Guggenheim' },
+      { src: '/images/noche2.jpg', meta: 'Valencia · Ciudad de las Artes' },
+      { src: '/images/noche3.jpg', meta: 'Singapur · Marina Bay' }
     ]
   }
 ];
 
-const marqueeTexts = [
-  'ARTE · LUZ · MOVIMIENTO · HISTORIAS ·',
-  'EXPERIENCIAS · RETRATOS · ESPACIOS · MEMORIAS ·'
+const highlights = [
+  'Dirección creativa completa para editoriales y marcas emergentes',
+  'Procesos colaborativos con equipos de diseño, estilismo y música',
+  'Edición minuciosa con textura cinematográfica y profundidad tonal'
 ];
+
+const timeline = [
+  {
+    year: '2012',
+    title: 'Primer editorial independiente',
+    description: 'Serie “Luz líquida” publicada en revista local y premiada por Nikon Young Talents.'
+  },
+  {
+    year: '2016',
+    title: 'Residencia creativa en Berlín',
+    description: 'Exploración documental de comunidades creativas; exposición colectiva en Soho House.'
+  },
+  {
+    year: '2019',
+    title: 'Fundación del estudio Joaquín Caparrós',
+    description: 'Equipo multidisciplinar para producciones comerciales en Europa y LATAM.'
+  },
+  {
+    year: '2024',
+    title: 'Premio European Lens Awards',
+    description: 'Reconocimiento a la serie “Metropolis at Night” en la categoría Arquitectura.'
+  }
+];
+
+const services = [
+  {
+    title: 'Editorial Signature',
+    price: 'desde 1.200 €',
+    summary: 'Producciones narrativas para revistas, catálogos y campañas con enfoque minimalista.',
+    features: ['Moodboard y dirección creativa', 'Equipo técnico + asistente de iluminación', 'Entrega en 7 días hábiles']
+  },
+  {
+    title: 'Retrato Personal',
+    price: 'desde 480 €',
+    summary: 'Sesiones íntimas para artistas, emprendedores y storytellers que buscan identidad visual.',
+    features: ['Sesión de 2 horas · 2 localizaciones', 'Styling y guía de poses', '20 fotografías retocadas']
+  },
+  {
+    title: 'Wedding Minimal',
+    price: 'desde 1.950 €',
+    summary: 'Cobertura documental de bodas pequeñas con narrativa editorial y estética atemporal.',
+    features: ['Cobertura hasta 10 horas', 'Galería online en 72 h', 'Álbum fine art opcional']
+  }
+];
+
+const testimonials = [
+  {
+    name: 'Laura Méndez',
+    role: 'Directora creativa, Studio Lumen',
+    quote: 'Joaquín convirtió nuestro concepto en imágenes que respiran. Su cuidado por la luz es impecable.'
+  },
+  {
+    name: 'Daniel Rivas',
+    role: 'Editor jefe, Revista JUNO',
+    quote: 'Una mirada única y un proceso muy profesional. Las entregas siempre superan la expectativa.'
+  },
+  {
+    name: 'María & Hugo',
+    role: 'Boda íntima en Mallorca',
+    quote: 'Capturó cada emoción sin interrupciones. Tenemos un recuerdo elegante y sincero del día.'
+  }
+];
+
+const journalEntries = [
+  {
+    slug: 'luz-y-textura',
+    title: 'Luz y textura en espacios industriales',
+    date: 'Abril 2025',
+    excerpt: 'Un recorrido por localizaciones industriales en Bilbao, buscando geometrías y reflejos metálicos.',
+    href: '#'
+  },
+  {
+    slug: 'retratos-sin-posar',
+    title: 'Retratos sin posar: guía para artistas en estudio',
+    date: 'Marzo 2025',
+    excerpt: 'Estrategias para generar confianza y movimiento auténtico en sesiones de retrato contemporáneo.',
+    href: '#'
+  },
+  {
+    slug: 'color-nightlife',
+    title: 'Color grading para series nocturnas',
+    date: 'Febrero 2025',
+    excerpt: 'Cómo trabajo la gradación cromática para mantener detalle y contraste en escenas nocturnas.',
+    href: '#'
+  }
+];
+
+const backgroundVideo = '/images/2282013-uhd_3840_2024_24fps.mp4';
 
 const buildGalleryImages = () =>
   galleryDefinitions.map((section) => ({
@@ -126,14 +219,18 @@ function App() {
     <div className="app">
       <Loader ref={loaderRef} progress={progress} />
       <main className="demo-wrapper">
-        <Hero />
-        {marqueeTexts.map((text) => (
-          <TextBand key={text} text={text} />
-        ))}
+        <Hero backgroundVideo={backgroundVideo} />
+        <TextBand text="ARTE · LUZ · MOVIMIENTO · HISTORIAS ·" />
+        <AboutSection highlights={highlights} timeline={timeline} />
+        <ServicesSection services={services} />
+        <TextBand text="EXPERIENCIAS · RETRATOS · ESPACIOS · MEMORIAS ·" />
         {galleries.map((gallery) => (
           <GalleryRow key={gallery.title} {...gallery} />
         ))}
         <TextBand text="INSPIRACIÓN · CONFIANZA · CO-CREACIÓN ·" />
+        <TestimonialsSection testimonials={testimonials} />
+        <JournalSection entries={journalEntries} />
+        <ContactSection />
         <Footer />
       </main>
     </div>
