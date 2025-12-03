@@ -14,41 +14,43 @@ import TestimonialsSection from './components/TestimonialsSection.jsx';
 import TextBand from './components/TextBand.jsx';
 import { usePortfolioAnimations } from './hooks/usePortfolioAnimations.js';
 
+const asset = (file) => `${import.meta.env.BASE_URL}images/${file}`;
+
 const galleryDefinitions = [
   {
     title: 'Retratos editoriales',
     blurb: 'Luz natural y composiciones limpias que capturan la esencia de cada rostro.',
     frames: [
-      { src: '/images/retrato1.jpg', meta: 'Madrid · Luz natural' },
-      { src: '/images/retrato2.jpg', meta: 'Barcelona · Editorial urbana' },
-      { src: '/images/retrato3.jpg', meta: 'Estudio · Contraluces' }
+      { src: asset('retrato1.jpg'), meta: 'Madrid · Luz natural' },
+      { src: asset('retrato2.jpg'), meta: 'Barcelona · Editorial urbana' },
+      { src: asset('retrato3.jpg'), meta: 'Estudio · Contraluces' }
     ]
   },
   {
     title: 'Bodas minimalistas',
     blurb: 'Narrativas íntimas con énfasis en la conexión genuina y el detalle sutil.',
     frames: [
-      { src: '/images/bodas1.jpg', meta: 'Lisboa · Ceremonia civil' },
-      { src: '/images/bodas2.jpg', meta: 'Mallorca · Atardecer' },
-      { src: '/images/bodas3.jpg', meta: 'Madrid · Azotea' }
+      { src: asset('bodas1.jpg'), meta: 'Lisboa · Ceremonia civil' },
+      { src: asset('bodas2.jpg'), meta: 'Mallorca · Atardecer' },
+      { src: asset('bodas3.jpg'), meta: 'Madrid · Azotea' }
     ]
   },
   {
     title: 'Exploración documental',
     blurb: 'Crónicas visuales de viajes que muestran el pulso de cada ciudad.',
     frames: [
-      { src: '/images/ciudad1.jpg', meta: 'Tokio · Calle en movimiento' },
-      { src: '/images/ciudad2.jpg', meta: 'Nueva York · Lower East Side' },
-      { src: '/images/ciudad3.jpg', meta: 'Lima · Amanecer urbano' }
+      { src: asset('ciudad1.jpg'), meta: 'Tokio · Calle en movimiento' },
+      { src: asset('ciudad2.jpg'), meta: 'Nueva York · Lower East Side' },
+      { src: asset('ciudad3.jpg'), meta: 'Lima · Amanecer urbano' }
     ]
   },
   {
     title: 'Arquitectura nocturna',
     blurb: 'Geometrías y contrastes que resaltan la armonía del espacio urbano.',
     frames: [
-      { src: '/images/noche1.jpg', meta: 'Bilbao · Museo Guggenheim' },
-      { src: '/images/noche2.jpg', meta: 'Valencia · Ciudad de las Artes' },
-      { src: '/images/noche3.jpg', meta: 'Singapur · Marina Bay' }
+      { src: asset('noche1.jpg'), meta: 'Bilbao · Museo Guggenheim' },
+      { src: asset('noche2.jpg'), meta: 'Valencia · Ciudad de las Artes' },
+      { src: asset('noche3.jpg'), meta: 'Singapur · Marina Bay' }
     ]
   }
 ];
@@ -145,50 +147,50 @@ const journalEntries = [
   }
 ];
 
-const backgroundVideo = '/images/2282013-uhd_3840_2024_24fps.mp4';
+const backgroundVideo = asset('2282013-uhd_3840_2024_24fps.mp4');
 
 const showcaseImages = [
   {
-    src: '/images/retrato2.jpg',
+    src: asset('retrato2.jpg'),
     title: 'Retrato editorial',
     meta: 'Luz natural · Madrid',
     variant: 'wide'
   },
   {
-    src: '/images/noche3.jpg',
+    src: asset('noche3.jpg'),
     title: 'Arquitectura nocturna',
     meta: 'Singapur · Marina Bay',
     variant: 'tall'
   },
   {
-    src: '/images/ciudad2.jpg',
+    src: asset('ciudad2.jpg'),
     title: 'Vida urbana',
     meta: 'Nueva York · Lower East Side'
   },
   {
-    src: '/images/bodas1.jpg',
+    src: asset('bodas1.jpg'),
     title: 'Ceremonia íntima',
     meta: 'Lisboa · Luz dorada'
   },
   {
-    src: '/images/retrato1.jpg',
+    src: asset('retrato1.jpg'),
     title: 'Rostro y textura',
     meta: 'Madrid · Editorial'
   },
   {
-    src: '/images/bodas3.jpg',
+    src: asset('bodas3.jpg'),
     title: 'Azotea al atardecer',
     meta: 'Madrid · Bodas minimal',
     variant: 'wide'
   },
   {
-    src: '/images/ciudad3.jpg',
+    src: asset('ciudad3.jpg'),
     title: 'Amanecer urbano',
     meta: 'Lima · Contrastes',
     variant: 'tall'
   },
   {
-    src: '/images/noche2.jpg',
+    src: asset('noche2.jpg'),
     title: 'Perspectiva moderna',
     meta: 'Valencia · Ciudad de las Artes'
   }
