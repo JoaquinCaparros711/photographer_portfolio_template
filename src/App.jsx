@@ -8,6 +8,7 @@ import GalleryRow from './components/GalleryRow.jsx';
 import Hero from './components/Hero.jsx';
 import JournalSection from './components/JournalSection.jsx';
 import Loader from './components/Loader.jsx';
+import ShowcaseSection from './components/ShowcaseSection.jsx';
 import ServicesSection from './components/ServicesSection.jsx';
 import TestimonialsSection from './components/TestimonialsSection.jsx';
 import TextBand from './components/TextBand.jsx';
@@ -71,7 +72,7 @@ const timeline = [
   },
   {
     year: '2019',
-    title: 'Fundación del estudio Joaquín Caparrós',
+    title: 'Fundación del estudio Alex Viera',
     description: 'Equipo multidisciplinar para producciones comerciales en Europa y LATAM.'
   },
   {
@@ -106,7 +107,7 @@ const testimonials = [
   {
     name: 'Laura Méndez',
     role: 'Directora creativa, Studio Lumen',
-    quote: 'Joaquín convirtió nuestro concepto en imágenes que respiran. Su cuidado por la luz es impecable.'
+    quote: 'Alex Viera convirtió nuestro concepto en imágenes que respiran. Su cuidado por la luz es impecable.'
   },
   {
     name: 'Daniel Rivas',
@@ -145,6 +146,53 @@ const journalEntries = [
 ];
 
 const backgroundVideo = '/images/2282013-uhd_3840_2024_24fps.mp4';
+
+const showcaseImages = [
+  {
+    src: '/images/retrato2.jpg',
+    title: 'Retrato editorial',
+    meta: 'Luz natural · Madrid',
+    variant: 'wide'
+  },
+  {
+    src: '/images/noche3.jpg',
+    title: 'Arquitectura nocturna',
+    meta: 'Singapur · Marina Bay',
+    variant: 'tall'
+  },
+  {
+    src: '/images/ciudad2.jpg',
+    title: 'Vida urbana',
+    meta: 'Nueva York · Lower East Side'
+  },
+  {
+    src: '/images/bodas1.jpg',
+    title: 'Ceremonia íntima',
+    meta: 'Lisboa · Luz dorada'
+  },
+  {
+    src: '/images/retrato1.jpg',
+    title: 'Rostro y textura',
+    meta: 'Madrid · Editorial'
+  },
+  {
+    src: '/images/bodas3.jpg',
+    title: 'Azotea al atardecer',
+    meta: 'Madrid · Bodas minimal',
+    variant: 'wide'
+  },
+  {
+    src: '/images/ciudad3.jpg',
+    title: 'Amanecer urbano',
+    meta: 'Lima · Contrastes',
+    variant: 'tall'
+  },
+  {
+    src: '/images/noche2.jpg',
+    title: 'Perspectiva moderna',
+    meta: 'Valencia · Ciudad de las Artes'
+  }
+];
 
 const buildGalleryImages = () =>
   galleryDefinitions.map((section) => ({
@@ -227,6 +275,7 @@ function App() {
         {galleries.map((gallery) => (
           <GalleryRow key={gallery.title} {...gallery} />
         ))}
+        <ShowcaseSection images={showcaseImages} />
         <TextBand text="INSPIRACIÓN · CONFIANZA · CO-CREACIÓN ·" />
         <TestimonialsSection testimonials={testimonials} />
         <JournalSection entries={journalEntries} />

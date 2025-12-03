@@ -29,7 +29,8 @@ export const usePortfolioAnimations = (isReady) => {
           ease: 'none',
           scrollTrigger: {
             trigger: section,
-            scrub: 0.65
+            start: 'top bottom+=90%',
+            scrub: 0.8
           }
         }
       );

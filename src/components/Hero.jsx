@@ -6,7 +6,7 @@ const Hero = ({ backgroundVideo }) => (
     <div className="hero__overlay">
       <div className="hero__content">
         <div className="hero__heading">
-          <span className="hero__eyebrow">Joaquín Caparrós • Portfolio 2025</span>
+          <span className="hero__eyebrow">Alex Viera • Portfolio 2025</span>
           <h1 className="hero__title">
             Historias visuales que
             <br />
